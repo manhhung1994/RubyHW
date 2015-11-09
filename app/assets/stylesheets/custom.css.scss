@@ -1,11 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* universal */
+/* mixins, variables, etc. */
 
-body {
-	
-}
+$gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -13,7 +11,98 @@ body {
   box-sizing:         border-box;
 }
 
-/* miscellaneous */
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+ /* miscellaneous */
 
 .debug_dump {
   clear: both;
@@ -22,119 +111,25 @@ body {
   margin-top: 45px;
   @include box_sizing;
 }
-
-section {
-	overflow: auto;
-}
-
-textarea {
-	resize: vertical;
-}
-
-.center {
-	text-align: center;
-	h1 {
-		margin-bottom: 10px;
-	}
-}
-
-/*  typography */
-
-$gray-light: #777;
-
-h1, h2, h3, h4, h5, h6 {
-	line-height: 1;
-}
- h1 {
- 	font-size: 3em;
- 	letter-spacing: -2px;
- 	margin-bottom: 30px;
- 	text-align: center;
- }
- h2 {
- 	font-size: 1.2em;
- 	letter-spacing: -1px;
- 	margin-bottom: 30px;
- 	text-align: center;
- 	font-weight: normal;
- 	color: $gray-light;
- }
- p {
- 	font-size: 1.1em;
- 	line-height: 1.7em;
- }
-/* header */
-#logo {
-	float: left;
-	margin-right: 10px;
-	margin-top :5px;
-	font-size: 1.7em;
-	color: white;
-	
-	text-transform: uppercase;
-	letter-spacing: -1px;
-	
-	font-weight: bold;
-	&:hover {
-		color: orange;
-		text-decoration: none;
-	}
-}
-
-.header-a{
-	background: black;
-	margin-left:0px;
-	height:50px;
-}
-.abc{
-	margin-right:0px;
-}
-/* footer */
-
-footer {
-	margin-top: 45px;
-	padding-top: 5px;
-	border-top: 1px solid #eaeaea;
-	color: $gray-light;
-	a {
-		color: $gray;
-		&:hover {
-			color: $gray-darker;
-		}
-	}
-	small {
-		float: left;
-	}
-	ul {
-		float: right;
-		list-style: none;
-		li {
-			float: left;
-			margin-left: 15px;
-		}
-	}
-}
-
-/* sidebar */
 /* sidebar */
 
-aside{
+aside {
   section.user_info {
     margin-top: 20px;
   }
-  section{
+  section {
     padding: 10px 0;
     margin-top: 20px;
     &:first-child {
       border: 0;
       padding-top: 0;
     }
-    span{
+    span {
       display: block;
       margin-bottom: 3px;
       line-height: 1;
     }
-    h1{
+    h1 {
       font-size: 1.4em;
       text-align: left;
       letter-spacing: -1px;
@@ -144,29 +139,27 @@ aside{
   }
 }
 
-.gravatar{
+.gravatar {
   float: left;
   margin-right: 10px;
 }
 
-.gravatar_edit{
+.gravatar_edit {
   margin-top: 15px;
 }
-
 /* forms */
 
-input, textarea, select, .uneditable-input{
+input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
-input{
+input {
   height: auto !important;
 }
-
-#error_explanation{
+#error_explanation {
   color: red;
   ul {
     color: red;
@@ -174,13 +167,12 @@ input{
   }
 }
 
-.field_with_errors{
+.field_with_errors {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
   }
 }
-
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -193,4 +185,15 @@ input{
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
